@@ -1,0 +1,44 @@
+.memorycard {
+    width: 43vw;
+    max-width: 220px;
+    height: 80px;
+    border: 1px solid transparent;
+    border-radius: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 6px 6px;
+    padding: 8px;
+    background: #0057E7;
+    color: white;
+    box-shadow: 0 12px 6px -6px rgba(0, 0, 0, 0.6);
+    text-align: center;
+    font-size: 16px;
+}
+
+@media(min-width: 680px) {
+    .memorycard {
+        margin: 8px 8px;
+        height: 100px;
+    }
+}
+
+.memorycard__questionmark {
+    animation: zooming 0.8s forwards;
+    text-align: center;
+}
+
+@keyframes zooming {
+    0% {
+        font-size: 0px;
+    }
+    45% {
+        font-size: 48px;
+    }
+    55% {
+        font-size: 48px;
+    }
+    100% {
+        font-size: 0px;
+    }
+}

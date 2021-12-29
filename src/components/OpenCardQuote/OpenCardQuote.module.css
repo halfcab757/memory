@@ -1,0 +1,44 @@
+.quote {
+    text-align: center;
+    border: 1px solid black;
+    width: 75%;
+    margin: 12px auto;
+}
+
+.quote p {
+    margin: 8px 0;
+    font-size: 18px;
+    
+}
+
+.quote__lineLeft {
+    text-align: left;
+    padding-left: 6px;
+    font-style: italic;
+    transform: translateX(-150%);
+}
+
+.quote__lineRight {
+    text-align: right;
+    padding-right: 6px;
+    font-style: italic;
+}
+
+.quote__artist {
+    font-weight: bold;
+    margin-top: 14px;
+}
+
+.shown {
+    animation: slideQuote 0.5s forwards;
+}
+
+@keyframes slideQuote {
+    0% {
+        transform: translateX(-150%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}

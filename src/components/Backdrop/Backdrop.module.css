@@ -1,0 +1,41 @@
+.backdrop {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    background: rgb(0, 0, 0);
+    opacity: 0.6;
+}
+
+.show {
+    animation: appear 400ms forwards;
+}
+
+.hide {
+    animation: disappear 400ms forwards;
+}
+
+@keyframes appear {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.3;
+    }
+    100% {
+        opacity: 0.6;
+    }
+}
+
+@keyframes disappear {
+    0% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 0.3;
+    }
+    100% {
+        opacity: 0;
+    }
+}

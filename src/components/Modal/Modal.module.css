@@ -1,0 +1,9 @@
+.modal {
+    width: 80vw;
+    padding: 32px;
+    background: #ccc;
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    margin-left: -40vw;
+}

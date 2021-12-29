@@ -1,0 +1,13 @@
+.memory {
+    margin: 12px auto;
+    max-width: 825px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+@media(min-width: 680px) {
+    .memory {
+        margin: 16px auto;
+    }
+}

@@ -1,0 +1,35 @@
+.btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 8px auto;
+    color: black;
+    padding: 12px;
+    border-radius: 100px;
+    font-family: inherit;
+    font-size: 16px;
+    box-shadow: 0 12px 6px -6px rgba(0, 0, 0, 0.6);
+    background: transparent;
+    border: 1px solid black;
+
+}
+
+@media (hover: hover) {
+    .btn:hover {
+    color: white;
+    background: #D62D20;
+    border: 1px solid #D62D20;
+    }
+}
+
+@media(min-width: 400px) {
+    .btn {
+        margin: 12px 0;
+    }
+}
+
+.red {
+    background: #D62D20;
+    border: 1px solid #D62D20;
+}

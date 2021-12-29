@@ -1,0 +1,196 @@
+.opencard {
+    max-width: 480px;
+    min-width: 260px;
+    margin: 0 auto;
+    padding: 6px;
+    background: #F2F2F2;
+    border-radius: 24px;
+    position: fixed;
+    width: 90%;
+    top: 10%;
+    left: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 16px;
+}
+
+@media(min-width: 481px) {
+    .opencard {
+        left: calc(50% - 240px);
+    }
+}
+
+.quote {
+    text-align: center;
+    border-bottom: 1px solid transparent;
+    width: 90%;
+    margin: 12px auto;
+    transition: border-color 0.5s 1s ease-out;
+}
+
+.quote p {
+    margin: 8px 0;
+    
+}
+
+.quote__lineleft {
+    text-align: center;
+    font-style: italic;
+    transform: translateX(-350%);
+}
+
+.quote__lineright {
+    text-align: center;
+    font-style: italic;
+    transform: translateX(350%);
+}
+
+.quote__artist {
+    font-weight: bold;
+    margin-top: 16px !important;
+    transform: translateX(-350%);
+}
+
+.staticvisible {
+    transform: translateX(0);
+}
+
+.cardcontent {
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    border: 1px solid black;
+}
+
+.button-container {
+    width: 90%;
+    margin: 3px auto;
+    opacity: 0;
+    transition: opacity 0.5s 2.2s ease-out;
+}
+
+.funfact {
+    width: 90%;
+    margin: 0 auto;
+    opacity: 0;
+    transition: all 0.5s 1.5s ease-out; 
+}
+
+.funfact h3 {
+    text-align: center;
+    font-size: 16px;
+    margin-top: 4px;
+}
+
+.visible {
+    opacity: 1;
+}
+
+.bordervisible {
+    border-color: black;
+}
+
+@media(min-width: 400px) {
+    .button-container,
+    .funfact,
+    .quote {
+        width: 80%;
+    }
+}
+
+@media(min-width: 450px) {
+    .button-container,
+    .funFact,
+    .quote {
+        width: 80%;
+    }
+}
+
+.wiggle {
+    animation: wiggle 0.4s 3.6s forwards;
+}
+
+.open {
+    animation: enterOpenCard 800ms forwards;
+}
+
+.closed {
+    animation: exitOpenCard 800ms forwards;
+}
+
+.shown {
+    animation: slidefromleft 0.3s forwards;
+}
+
+.shown-two {
+    animation: slidefromright 0.3s 0.3s forwards;
+}
+
+.shown-three {
+    animation: slidefromleft 0.3s 0.7s forwards;
+}
+
+
+
+@keyframes enteropencard {
+    0% {
+        transform: translateY(-200%);
+    }
+    80% {
+        transform: translateY(25%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes exitopencard {
+    0% {
+        transform: translateY(0);
+    }
+    30% {
+        transform: translateY(50%);
+    }
+    100% {
+        transform: translateY(-200%);
+    }
+}
+
+@keyframes slidefromleft {
+    0% {
+        transform: translateX(-350%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slidefromright {
+    0% {
+        transform: translateX(350%);
+    }
+    100% {
+        transform: translateX(0);
+     }
+}
+
+@keyframes wiggle {
+    0% {
+        transform: rotateZ(0);
+    }
+    15% {
+        transform: rotateZ(-5deg);
+    }
+    45% {
+        transform: rotateZ(5deg);
+    }
+    75% {
+        transform: rotateZ(-5deg);
+    }
+    100% {
+        transform: rotateZ(0);
+    }
+}
