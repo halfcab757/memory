@@ -15,6 +15,11 @@
     font-size: 16px;
 }
 
+.opencard h2 {
+    text-align: center;
+    margin-bottom: 6px;
+}
+
 @media(min-width: 481px) {
     .opencard {
         left: calc(50% - 240px);
@@ -52,7 +57,7 @@
     transform: translateX(-350%);
 }
 
-.staticvisible {
+.static-visible {
     transform: translateX(0);
 }
 
@@ -88,7 +93,7 @@
     opacity: 1;
 }
 
-.bordervisible {
+.border-visible {
     border-color: black;
 }
 
@@ -121,20 +126,20 @@
 }
 
 .shown {
-    animation: slidefromleft 0.3s forwards;
+    animation: slideFromLeft 0.3s forwards;
 }
 
 .shown-two {
-    animation: slidefromright 0.3s 0.3s forwards;
+    animation: slideFromRight 0.3s 0.3s forwards;
 }
 
 .shown-three {
-    animation: slidefromleft 0.3s 0.7s forwards;
+    animation: slideFromLeft 0.3s 0.7s forwards;
 }
 
 
 
-@keyframes enteropencard {
+@keyframes enterOpenCard {
     0% {
         transform: translateY(-200%);
     }
@@ -146,7 +151,7 @@
     }
 }
 
-@keyframes exitopencard {
+@keyframes exitOpenCard {
     0% {
         transform: translateY(0);
     }
@@ -158,7 +163,7 @@
     }
 }
 
-@keyframes slidefromleft {
+@keyframes slideFromLeft {
     0% {
         transform: translateX(-350%);
     }
@@ -168,7 +173,7 @@
     }
 }
 
-@keyframes slidefromright {
+@keyframes slideFromRight {
     0% {
         transform: translateX(350%);
     }

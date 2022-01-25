@@ -22,19 +22,19 @@ export default function OpenCard(props) {
         const quoteCssClasses = [
           classes.quote__lineleft,
           state === 'entered' ? classes.shown : null,
-          state === 'exiting' ? classes.staticvisible : null,
+          state === 'exiting' ? classes['static-visible'] : null,
         ];
 
         const quoteClassesTwo = [
           classes.quote__lineright,
           state === 'entered' ? classes['shown-two'] : null,
-          state === 'exiting' ? classes.staticvisible : null,
+          state === 'exiting' ? classes['static-visible'] : null,
         ];
 
         const artistClasses = [
           classes.quote__artist,
           state === 'entered' ? classes['shown-three'] : null,
-          state === 'exiting' ? classes.staticvisible : null,
+          state === 'exiting' ? classes['static-visible'] : null,
         ];
 
         const funFactClasses = [
@@ -50,11 +50,12 @@ export default function OpenCard(props) {
 
         const quoteDivClasses = [
           classes.quote,
-          state === 'entered' ? classes.bordervisible : null,
+          state === 'entered' ? classes['border-visible'] : null,
         ];
 
         const renderedCard = (
           <div className={cardCssClasses.join(' ')}>
+            <h2>It's a match : )</h2>
             <div className={quoteDivClasses.join(' ')}>
               <p className={quoteCssClasses.join(' ')}>
                 <span>"</span>
