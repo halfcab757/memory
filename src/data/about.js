@@ -12,15 +12,19 @@ export const techStackItems = [
         level: '100%'
     },
     {
-        title: 'Node.js',
-        level: '75%'
-    },
-    {
         title: 'TypeScript',
         level: '75%'
     },
     {
+        title: 'Java',
+        level: '75%'
+    },
+    {
         title: 'git/gitHub',
+        level: '75%'
+    },
+    {
+        title: 'Node.js',
         level: '75%'
     },
     {

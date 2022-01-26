@@ -1,20 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 
-import Memory from './pages/Memory/Memory';
 import Start from './pages/Start/Start';
-import Final from './pages/Final/Final';
 import Navigation from './components/Layout/Navigation/Navigation';
-import About from './pages/About/About';
 
 import { rockCards, metalCards, popCards } from './data/Cards';
 
 import './App.css';
 
+const Memory = React.lazy(() => import('./pages/Memory/Memory'));
+const Final = React.lazy(() => import('./pages/Final/Final'));
+const About = React.lazy(() => import('./pages/About/About'));
+
 function App() {
   const [started, setStarted] = useState();
-  // isOver default ändern
   const [isOver, setIsOver] = useState();
-  // set counter to zero
   const [counter, setCounter] = useState(3);
   const [mode, setMode] = useState();
   const [showAbout, setShowAbout] = useState(false);
@@ -105,6 +104,7 @@ function App() {
         onShowAbout={toggleShowAboutHandler}
         onShowStart={closeAboutAndResetHandler}
       />
+      <Suspense fallback={<p style={{textAlign: 'center'}}>Loading</p>}>
       <div className="App">
         {!started && !showAbout && <Start onStart={startGameHandler} showWelcome={showWelcome} closeWelcome={closeWelcomeHandler}/>}
         {started && !isOver && (
@@ -130,6 +130,7 @@ function App() {
           onCloseAboutAndReset={closeAboutAndResetHandler}
         />
       )}
+      </Suspense>
     </React.Fragment>
   );
 }

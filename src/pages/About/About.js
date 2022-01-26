@@ -19,9 +19,6 @@ export default function About(props) {
 
     return (
         <div className={classes.about}>
-            {/* <div className={classes.introduction}>
-                <p>Thank you very much for taking a look at my app. I appreciate that!</p>
-            </div> */}
             <div className={classes.container}>
                 <AboutCard
                     onMoreDetails={() => setDetailHandler('aboutMe')}>
