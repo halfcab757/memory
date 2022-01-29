@@ -104,7 +104,7 @@ export const rockCards = [
         pairId: 'F',
         title: "I´m a loser and a user",
         artist: 'Green Day',
-        fullQuote: ["I´m a loser and a user", "So I don´t need an accuser"],
+        fullQuote: ["I´m a loser and a user", "So I don´t need no accuser"],
         revealed: false,
         pairFound: false,
         fact: "Bass player Mike Dirnt got a tooth knocked out when he wanted to leave the stage. A security had mistaken him for a fan."
@@ -114,7 +114,7 @@ export const rockCards = [
         pairId: 'F',
         title: "So I don´t need no accuser",
         artist: 'Green Day',
-        fullQuote: ["I´m a loser and a user", "So I don´t need an accuser"],
+        fullQuote: ["I´m a loser and a user", "So I don´t need no accuser"],
         revealed: false,
         pairFound: false,
         fact: "Bass player Mike Dirnt got a tooth knocked out when he wanted to leave the stage. A security had mistaken him for a fan."

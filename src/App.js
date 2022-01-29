@@ -44,34 +44,55 @@ function App() {
   }
 
   function startGameHandler(style) {
-    let cards;
-    if (style === 'ROCK') {
-      cards = rockCards.map((card) => {
-        return {
-          ...card,
-          revealed: false,
-        };
-      });
-    }
-    if (style === 'METAL') {
-      cards = metalCards.map((card) => {
-        return {
-          ...card,
-          revealed: false,
-        };
-      });
-    }
-    if (style === 'POP') {
-      cards = popCards.map((card) => {
-        return {
-          ...card,
-          revealed: false,
-        };
-      });
-    }
+    const cards = getCards(style);
     setMemoryCards(shuffle(cards));
     setIsOver(false);
     setStarted(true);
+  }
+
+  function getCards(musicStyle) {
+    let cards;
+
+    if (musicStyle === 'ROCK') {
+      cards = getRockCards();
+    }
+    
+    if (musicStyle === 'METAL') {
+      cards = getMetalCards();
+    }
+
+    if (musicStyle === 'POP') {
+      cards = getPopCards();
+    }
+
+    return cards;
+  }
+
+  function getRockCards() {
+    return rockCards.map((card) => {
+      return {
+        ...card,
+        revealed: false,
+      };
+    });
+  }
+
+  function getMetalCards() {
+    return metalCards.map((card) => {
+      return {
+        ...card,
+        revealed: false,
+      };
+    });
+  }
+
+  function getPopCards() {
+    return popCards.map((card) => {
+      return {
+        ...card,
+        revealed: false,
+      };
+    });
   }
 
   function finishGame() {

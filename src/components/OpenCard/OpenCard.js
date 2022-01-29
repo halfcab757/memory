@@ -5,7 +5,7 @@ import classes from './OpenCard.module.css';
 
 export default function OpenCard(props) {
 
-    let buttonText = props.allPairsFound ? 'CHECK RESULTS' : 'GO ON';
+    let buttonText = props.allPairsFound ? 'CHECK EVALUATION' : 'GO ON';
 
   return (
     <Transition in={props.show} timeout={400} mountOnEnter unmountOnExit>

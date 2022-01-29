@@ -15,11 +15,10 @@ const Memory = (props) => {
   const [showBackdrop, setShowBackdrop] = useState();
   const [isNoMatch, setIsNoMatch] = useState();
 
-  const { isOver, finish } = props;
+  const { onFinish } = props;
 
   let allPairsFound = cards.filter((card) => !card.pairFound).length === 0;
 
-  //   Häh?
   useEffect(() => {}, [cards]);
 
   const cardCover = useCallback(() => {
@@ -38,9 +37,9 @@ const Memory = (props) => {
   }, []);
 
   const blurCard = useCallback(() => {
-    console.log('blurCard');
     setIsMatch(false);
     setIsNoMatch(false);
+
     setTimeout(() => {
       setShowBackdrop(false);
       setFocusedCard(null);
@@ -49,65 +48,99 @@ const Memory = (props) => {
     setTimeout(() => {
       cardCover();
     }, 400);
-    // checking if all pairs are found
-    if (cards.filter((card) => !card.pairFound).length === 0) {
-      return props.onFinish();
+
+    const allPairsFound = (cards.filter(card => !card.pairFound)).length === 0;
+
+    if (allPairsFound) {
+      return onFinish();
     }
   }, [
-    revealedCards,
-    cards,
-    isOver,
-    finish,
     setIsMatch,
     setShowBackdrop,
     setFocusedCard,
     cardCover,
+    onFinish,
+    cards
   ]);
 
-  const cardClickHandler = (cardId) => {
+  const validateCardClick = (cardId) => {
     if (focusedCard && focusedCard.id === cardId) {
-      // same card got clicked twice
-      return;
+      return false;
     }
+
     if (revealedCards >= 2) {
+      return false;
+    }
+
+    return true;
+  };
+
+  const showFeedback = (cardsMatch) => {
+    if (cardsMatch) {
+      setTimeout(() => {
+        setRevealedCards(0);
+        setShowBackdrop(true);
+        return setIsMatch(true);
+      }, 1000);
+    }
+
+    if (!cardsMatch) {
+      setTimeout(() => {
+        setIsNoMatch(true);
+        setShowBackdrop(true);
+      }, 1400);
+    }
+  };
+
+  const checkForMatch = (cards) => {
+    if (revealedCards === 0) {
       return;
     }
-    setRevealedCards((prevRevealedCards) => prevRevealedCards + 1);
-    props.increaseCount();
-
-    setFocusedCard(cards.find((card) => card.id === cardId));
-    const updatedCards = [...cards];
-    const selectedCardIndex = updatedCards.findIndex(
-      (card) => card.id === cardId
-    );
-    const selectedCard = updatedCards[selectedCardIndex];
-    selectedCard.revealed = true;
-    updatedCards[selectedCardIndex] = selectedCard;
-
-    setCards(updatedCards);
-
-    // checking both revealed cards for pairing
 
     if (revealedCards === 1) {
-      const visibleCards = updatedCards.filter(
+      const visibleCards = cards.filter(
         (card) => card.revealed && !card.pairFound
       );
-      if (visibleCards[0].pairId === visibleCards[1].pairId) {
+
+      const cardsMatch = visibleCards[0].pairId === visibleCards[1].pairId;
+
+      if (cardsMatch) {
         for (const card of visibleCards) {
           card.pairFound = true;
         }
-        setTimeout(() => {
-          setRevealedCards(0);
-          setShowBackdrop(true);
-          return setIsMatch(true);
-        }, 1000);
-      } else {
-        setTimeout(() => {
-          setIsNoMatch(true);
-          setShowBackdrop(true);
-        }, 1400);
       }
+
+      showFeedback(cardsMatch);
     }
+  };
+
+  const updateCards = (clickedCardId) => {
+    const updatedCards = [...cards];
+    const selectedCardIndex = updatedCards.findIndex(
+      (card) => card.id === clickedCardId
+    );
+    const selectedCard = updatedCards[selectedCardIndex];
+
+    selectedCard.revealed = true;
+    updatedCards[selectedCardIndex] = selectedCard;
+
+    return updatedCards;
+  };
+
+  const cardClickHandler = (cardId) => {
+    const isValidCardClick = validateCardClick(cardId);
+    if (!isValidCardClick) {
+      return;
+    }
+
+    setRevealedCards((prevRevealedCards) => prevRevealedCards + 1);
+    props.increaseCount();
+    setFocusedCard(cards.find((card) => card.id === cardId));
+
+    const updatedCards = updateCards(cardId);
+    setCards(updatedCards);
+
+    checkForMatch(updatedCards);
   };
 
   const renderedCards = cards.map((card) => {
